@@ -10,12 +10,18 @@ night-skip:
   enabled: true # Skip the night if a percentage of the players in a world are sleeping
   percentage: 50 # Percentage of players required to be sleeping to skip the night (0 - 100)
   time-rate: 70 # The amount of ticks added to the current time every tick when skipping the night
-  daytime-ticks: 1200 # The time in ticks that Harbor considers day
+  daytime-ticks: 0 # The time in ticks that Harbor considers day (time to stop at after sleeping)
   instant-skip: false # Instantly skip the night when the percentage threshold is reached instead of showing the full animation
   proportional-acceleration: false # Increase the night skipping speed based on the amount of sleeping players
   clear-rain: true # Clear rain (if it's raining) when the night is skipped
   clear-thunder: true # Clear thunder (if it's thundering) when the night is skipped
   reset-phantom-statistic: true # Treats everyone online as if they have slept in the last 3 days after the night is skipped (check out /gamerule doInsomnia on 1.15+)
+
+speed:
+  enabled: false
+  night: 1.0
+  day: 1.0
+  update-every: 2
 
 exclusions:
   ignored-permission: true # Exclude players with the permission "harbor.ignored" from the sleeping count

@@ -8,7 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import xyz.nkomarn.harbor.command.ForceSkipCommand;
 import xyz.nkomarn.harbor.command.HarborCommand;
 import xyz.nkomarn.harbor.listener.BedListener;
+import xyz.nkomarn.harbor.task.AccelerateNightTask;
 import xyz.nkomarn.harbor.task.Checker;
+import xyz.nkomarn.harbor.task.TimeAlter;
 import xyz.nkomarn.harbor.util.Config;
 import xyz.nkomarn.harbor.util.Messages;
 import xyz.nkomarn.harbor.util.Metrics;
@@ -24,6 +26,8 @@ public class Harbor extends JavaPlugin {
     private Messages messages;
     private PlayerManager playerManager;
     private Essentials essentials;
+    
+    public boolean skippingNight = false;
 
     public void onEnable() {
         PluginManager pluginManager = getServer().getPluginManager();
@@ -50,6 +54,10 @@ public class Harbor extends JavaPlugin {
 
         if (config.getBoolean("metrics")) {
             new Metrics(this);
+        }
+        
+        for (World world : getServer().getWorlds()) {
+            new TimeAlter(this, world);
         }
     }
 
